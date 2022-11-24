@@ -4,24 +4,28 @@ import { Todo } from "./models/Todo";
 let todos: Todo[] = JSON.parse(localStorage.getItem("todos") || "[]");
 
 //Lägger till klick på rensa listan
-document.getElementById("clearTodos")?.addEventListener("click", () => {
-  clearTodos(todos);
-});
+export function init() {
+  document.getElementById("clearTodos")?.addEventListener("click", () => {
+    exports.clearTodos(todos);
+  });
 
-//Lägger till submit-händelsen och loggar listan
-(document.getElementById("newTodoForm") as HTMLFormElement)?.addEventListener(
-  "submit",
-  (e: SubmitEvent) => {
-    e.preventDefault();
+  //Lägger till submit-händelsen och loggar listan
+  (document.getElementById("newTodoForm") as HTMLFormElement)?.addEventListener(
+    "submit",
+    (e: SubmitEvent) => {
+      e.preventDefault();
 
-    let todoText: string = (
-      document.getElementById("newTodoText") as HTMLInputElement
-    ).value;
-    console.log("Todos when creating", todos);
+      let todoText: string = (
+        document.getElementById("newTodoText") as HTMLInputElement
+      ).value;
+      console.log("Todos when creating", todos);
 
-    createNewTodo(todoText, todos);
-  }
-);
+      exports.createNewTodo(todoText, todos);
+    }
+  );
+}
+
+init();
 
 export function createNewTodo(todoText: string, todos: Todo[]) {
   let result = addTodo(todoText, todos);
@@ -80,7 +84,7 @@ function displayError(error: string, show: boolean) {
   }
 }
 
-function clearTodos(todos: Todo[]) {
+export function clearTodos(todos: Todo[]) {
   removeAllTodos(todos);
   createHtml(todos);
 }
