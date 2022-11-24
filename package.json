@@ -5,6 +5,7 @@
     "@parcel/validator-typescript": "^2.8.0",
     "@types/jest": "^29.2.3",
     "jest": "^29.3.1",
+    "jest-environment-jsdom": "^29.3.1",
     "parcel": "^2.8.0",
     "ts-jest": "^29.0.3"
   },
@@ -12,6 +13,11 @@
     "test": "jest --watchAll"
   },
   "jest": {
-    "preset": "ts-jest"
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "coverageReporters": [
+      "html"
+    ]
   }
 }
