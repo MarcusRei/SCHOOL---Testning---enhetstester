@@ -31,13 +31,13 @@ export function createNewTodo(todoText: string, todos: Todo[]) {
   let result = addTodo(todoText, todos);
 
   if (result.success) {
-    createHtml(todos);
+    exports.createHtml(todos);
   } else {
     exports.displayError(result.error, true);
   }
 }
 
-function createHtml(todos: Todo[]) {
+export function createHtml(todos: Todo[]) {
   //Lägger listan på LS
   localStorage.setItem("todos", JSON.stringify(todos));
 
@@ -58,7 +58,7 @@ function createHtml(todos: Todo[]) {
     li.innerHTML = todos[i].text;
     //Lägger till klick och togglar .done
     li.addEventListener("click", () => {
-      toggleTodo(todos[i]);
+      exports.toggleTodo(todos[i]);
     });
 
     todosContainer.appendChild(li);
@@ -66,8 +66,8 @@ function createHtml(todos: Todo[]) {
 }
 
 export function toggleTodo(todo: Todo) {
-  changeTodo(todo);
-  createHtml(todos);
+  exports.changeTodo(todo);
+  exports.createHtml(todos);
 }
 
 export function displayError(error: string, show: boolean) {
@@ -85,8 +85,8 @@ export function displayError(error: string, show: boolean) {
 }
 
 export function clearTodos(todos: Todo[]) {
-  removeAllTodos(todos);
-  createHtml(todos);
+  exports.removeAllTodos(todos);
+  exports.createHtml(todos);
 }
 
 //createHtml(todos);
