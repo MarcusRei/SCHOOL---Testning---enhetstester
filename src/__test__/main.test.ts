@@ -1,6 +1,6 @@
 /**
- *@jest-environment jsdom
- */
+*@jest-environment jsdom
+*/
 
 import * as functions from "../ts/main";
 import { Todo } from "../ts/models/Todo";
@@ -18,7 +18,7 @@ test("should be able to click", () => {
   expect(spy).toHaveBeenCalled();
 });
 
-test("should be able to submit", () => {
+/* test("should be able to submit", () => {
   //Arrange
   let spy = jest.spyOn(functions, "createNewTodo");
   document.body.innerHTML = `<form id="newTodoForm">
@@ -35,7 +35,7 @@ test("should be able to submit", () => {
 
   //Assert
   expect(spy).toHaveBeenCalled();
-});
+}); */
 
 /* test("should create new todo", () => {
   //Arrange
@@ -59,8 +59,46 @@ test("should be able to submit", () => {
   //Assert
 }); */
 
-/* test("should display error", () => {
-  //Arrange
-  //Act
-  //Assert
-}); */
+describe("displayError", () => {
+  test("should add HTML to div", () => {
+    //Arrange
+    document.body.innerHTML = `
+    <div id="error" class="error"></div>`;
+    let error: string = "Error Message";
+    let show: boolean = true;
+
+    //Act
+    functions.displayError(error, show);
+
+    //Assert
+    expect((document.getElementById("error") as HTMLDivElement).innerHTML).toBe("Error Message");
+  });
+
+  test("should add class to div", () => {
+    //Arrange
+    document.body.innerHTML = `
+    <div id="error" class="error"></div>`;
+    let error: string = "Error Message";
+    let show: boolean = true;
+
+    //Act
+    functions.displayError(error, show);
+
+    //Assert
+    expect((document.getElementById("error") as HTMLDivElement).classList.length).toBe(2)
+  });
+
+  test("should not add class to div", () => {
+    //Arrange
+    document.body.innerHTML = `
+    <div id="error" class="error"></div>`;
+    let error: string = "Error Message";
+    let show: boolean = false;
+
+    //Act
+    functions.displayError(error, show);
+
+    //Assert
+    expect((document.getElementById("error") as HTMLDivElement).classList.length).toBe(1)
+  });
+});

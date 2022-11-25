@@ -27,7 +27,7 @@ test("should remove todos from list", () => {
   expect(todos.length).toBe(0);
 });
 
-test("should add to list", () => {
+test("should add object to list", () => {
   //Arrange
   let todos: Todo[] = [];
   let textUserWrites: string = "Hello";
@@ -39,7 +39,7 @@ test("should add to list", () => {
   expect(todos.length).toBe(1);
 });
 
-test("should not add to list", () => {
+test("should not add object to list", () => {
   //Arrange
   let todos: Todo[] = [];
   let textUserWrites: string = "He";
