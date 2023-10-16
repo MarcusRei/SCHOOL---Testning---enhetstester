@@ -1,6 +1,6 @@
 # 🧪 Inlämningsuppgift 1 - Enhetstester
 
-Kurs: testning
+Kurs: **testning**
 
 ## Enhetstester med jest
 
