@@ -1,4 +1,6 @@
-# 🧪 Inlämningsuppgift 1 i kursen Testning
+# 🧪 Inlämningsuppgift 1 - Enhetstester
+
+Kurs: testning
 
 ## Enhetstester med jest
 
